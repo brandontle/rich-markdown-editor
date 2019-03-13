@@ -20,6 +20,8 @@ import queries from "./queries";
 export const theme = lightTheme;
 export const schema = defaultSchema;
 
+type IValueCallback = () => string;
+
 type Props = {
   id?: string,
   defaultValue: string,
@@ -35,7 +37,7 @@ type Props = {
   uploadImage?: (file: File) => Promise<string>,
   onSave?: ({ done?: boolean }) => *,
   onCancel?: () => *,
-  onChange: ((value: () => string), slateValue: Value) => *,
+  onChange: (value: IValueCallback, slateValue: Value) => *,
   onImageUploadStart?: () => *,
   onImageUploadStop?: () => *,
   onSearchLink?: (term: string) => Promise<SearchResult[]>,
