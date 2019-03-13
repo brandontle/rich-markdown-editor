@@ -287,13 +287,13 @@ class RichMarkdownEditor extends React.PureComponent<Props, State> {
               this.editor && (
                 <Toolbar value={this.state.editorValue} editor={this.editor} />
               )}
-            {!readOnly &&
+            {/* {!readOnly &&
               this.editor && (
                 <BlockInsert
                   editor={this.editor}
                   onInsertImage={this.insertImageFile}
                 />
-              )}
+              )} */}
             <StyledEditor
               ref={this.setEditorRef}
               plugins={this.plugins}
