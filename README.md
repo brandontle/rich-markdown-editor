@@ -1,3 +1,10 @@
+# @brandontle/rich-markdown-editor
+This fork make a few opinionated modifications to the already-wonderful rich-markdown-editor.
+
+### Current changes include:
+* Removal of the BlockInsert buttons on the side
+* An additional `stringChanged` variable passed to the onChange callback to indicate that the string value (and not the editor selection) has changed.
+
 [![npm version](https://badge.fury.io/js/rich-markdown-editor.svg)](https://badge.fury.io/js/rich-markdown-editor) [![CircleCI](https://img.shields.io/circleci/project/github/outline/rich-markdown-editor.svg)](https://circleci.com/gh/outline/rich-markdown-editor) [![Join the community on Spectrum](https://withspectrum.github.io/badge/badge.svg)](https://spectrum.chat/outline) [![Formatted with Prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat)](https://github.com/prettier/prettier)
 
 # rich-markdown-editor
