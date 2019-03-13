@@ -37,7 +37,7 @@ type Props = {
   uploadImage?: (file: File) => Promise<string>,
   onSave?: ({ done?: boolean }) => *,
   onCancel?: () => *,
-  onChange: (value: IValueCallback, stringChanged: boolean) => *,
+  onChange: (value: IValueCallback, documentChanged: boolean) => *,
   onImageUploadStart?: () => *,
   onImageUploadStop?: () => *,
   onSearchLink?: (term: string) => Promise<SearchResult[]>,
@@ -133,11 +133,13 @@ class RichMarkdownEditor extends React.PureComponent<Props, State> {
 
   handleChange = ({ value }: { value: Value }) => {
     if (this.state.editorValue !== value) {
-      this.setState({ editorValue: value }, state => {
-        if (this.props.onChange && !this.props.readOnly) {
-          this.props.onChange(this.value, this.state.editorValue.document !== value.document);
-        }
-      });
+      if (this.props.onChange && !this.props.readOnly) {
+        this.props.onChange(
+          this.value,
+          this.state.editorValue.document !== value.document
+        );
+      }
+      this.setState({ editorValue: value });
     }
   };
 
