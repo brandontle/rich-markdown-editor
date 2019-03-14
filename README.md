@@ -1,5 +1,5 @@
 # @brandontle/rich-markdown-editor
-This fork make a few opinionated modifications to the already-wonderful rich-markdown-editor.
+This fork makes a few opinionated modifications to the already-wonderful rich-markdown-editor.
 
 ### Current changes include:
 * Removal of the BlockInsert buttons on the side
