@@ -1,21 +1,21 @@
 // @flow
-import * as React from "react";
-import { Value, Editor as TEditor, Schema, Node } from "slate";
-import { Editor } from "slate-react";
-import styled, { ThemeProvider } from "styled-components";
-import type { Plugin, SearchResult } from "./types";
-import { light as lightTheme, dark as darkTheme } from "./theme";
-import defaultSchema from "./schema";
-import getDataTransferFiles from "./lib/getDataTransferFiles";
-import isModKey from "./lib/isModKey";
-import Flex from "./components/Flex";
-import Toolbar from "./components/Toolbar";
-import BlockInsert from "./components/BlockInsert";
-import Contents from "./components/Contents";
-import Markdown from "./serializer";
-import createPlugins from "./plugins";
-import commands from "./commands";
-import queries from "./queries";
+import * as React from 'react';
+import { Value, Editor as TEditor, Schema, Node } from 'slate';
+import { Editor } from 'slate-react';
+import styled, { ThemeProvider } from 'styled-components';
+import type { Plugin, SearchResult } from './types';
+import { light as lightTheme, dark as darkTheme } from './theme';
+import defaultSchema from './schema';
+import getDataTransferFiles from './lib/getDataTransferFiles';
+import isModKey from './lib/isModKey';
+import Flex from './components/Flex';
+import Toolbar from './components/Toolbar';
+import BlockInsert from './components/BlockInsert';
+import Contents from './components/Contents';
+import Markdown from './serializer';
+import createPlugins from './plugins';
+import commands from './commands';
+import queries from './queries';
 
 export const theme = lightTheme;
 export const schema = defaultSchema;
@@ -55,8 +55,8 @@ type State = {
 
 class RichMarkdownEditor extends React.PureComponent<Props, State> {
   static defaultProps = {
-    defaultValue: "",
-    placeholder: "Write something nice…",
+    defaultValue: '',
+    placeholder: 'Write something nice…',
     onImageUploadStart: () => {},
     onImageUploadStop: () => {},
     plugins: [],
@@ -89,7 +89,7 @@ class RichMarkdownEditor extends React.PureComponent<Props, State> {
     this.scrollToAnchor();
 
     if (this.props.readOnly) return;
-    window.addEventListener("keydown", this.handleKeyDown);
+    window.addEventListener('keydown', this.handleKeyDown);
 
     if (this.props.autoFocus) {
       this.focusAtEnd();
@@ -103,7 +103,7 @@ class RichMarkdownEditor extends React.PureComponent<Props, State> {
   }
 
   componentWillUnmount() {
-    window.removeEventListener("keydown", this.handleKeyDown);
+    window.removeEventListener('keydown', this.handleKeyDown);
   }
 
   scrollToAnchor() {
@@ -112,12 +112,12 @@ class RichMarkdownEditor extends React.PureComponent<Props, State> {
 
     try {
       const element = document.querySelector(hash);
-      if (element) element.scrollIntoView({ behavior: "smooth" });
+      if (element) element.scrollIntoView({ behavior: 'smooth' });
     } catch (err) {
       // querySelector will throw an error if the hash begins with a number
       // or contains a period. This is protected against now by safeSlugify
       // however previous links may be in the wild.
-      console.warn("Attempted to scroll to invalid hash", err);
+      console.warn('Attempted to scroll to invalid hash', err);
     }
   }
 
@@ -131,19 +131,13 @@ class RichMarkdownEditor extends React.PureComponent<Props, State> {
     return Markdown.serialize(this.state.editorValue);
   };
 
-  serializeValue = (editorValue: any): string => {
-    return Markdown.serialize(editorValue);
-  };
-
   handleChange = ({ value }: { value: Value }) => {
+    const documentChanged = this.state.editorValue.document !== value.document;
     if (this.state.editorValue !== value) {
       if (this.props.onChange && !this.props.readOnly) {
-        this.props.onChange(
-          this.serializeValue(value),
-          this.state.editorValue.document !== value.document
-        );
+        this.setState({ editorValue: value });
+        this.props.onChange(this.value, documentChanged);
       }
-      this.setState({ editorValue: value });
     }
   };
 
@@ -163,7 +157,7 @@ class RichMarkdownEditor extends React.PureComponent<Props, State> {
     const files = getDataTransferFiles(ev);
     for (let i = 0; i < files.length; i++) {
       const file = files[i];
-      if (file.type.startsWith("image/")) {
+      if (file.type.startsWith('image/')) {
         await this.insertImageFile(file);
       }
     }
@@ -212,13 +206,13 @@ class RichMarkdownEditor extends React.PureComponent<Props, State> {
     if (this.props.readOnly) return next();
 
     switch (ev.key) {
-      case "s":
+      case 's':
         if (isModKey(ev)) return this.onSave(ev);
         break;
-      case "Enter":
+      case 'Enter':
         if (isModKey(ev)) return this.onSaveAndExit(ev);
         break;
-      case "Escape":
+      case 'Escape':
         if (isModKey(ev)) return this.onCancel(ev);
         break;
       default:
@@ -288,13 +282,12 @@ class RichMarkdownEditor extends React.PureComponent<Props, State> {
       >
         <ThemeProvider theme={theme}>
           <React.Fragment>
-            {toc &&
-              this.state.editorLoaded &&
-              this.editor && <Contents editor={this.editor} />}
-            {!readOnly &&
-              this.editor && (
-                <Toolbar value={this.state.editorValue} editor={this.editor} />
-              )}
+            {toc && this.state.editorLoaded && this.editor && (
+              <Contents editor={this.editor} />
+            )}
+            {!readOnly && this.editor && (
+              <Toolbar value={this.state.editorValue} editor={this.editor} />
+            )}
             {/* {!readOnly &&
               this.editor && (
                 <BlockInsert
@@ -370,7 +363,7 @@ const StyledEditor = styled(Editor)`
   }
 
   a:hover {
-    text-decoration: ${props => (props.readOnly ? "underline" : "none")};
+    text-decoration: ${props => (props.readOnly ? 'underline' : 'none')};
   }
 
   li p {
