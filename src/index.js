@@ -276,7 +276,7 @@ class RichMarkdownEditor extends React.PureComponent<Props, State> {
         onDragOver={this.cancelEvent}
         onDragEnter={this.cancelEvent}
         align="flex-start"
-        justify="center"
+        justify="flex-start"
         column
         auto
       >
