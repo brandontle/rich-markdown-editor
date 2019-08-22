@@ -1,7 +1,7 @@
 {
   "name": "@brandontle/rich-markdown-editor",
   "description": "A rich text editor with Markdown shortcuts built on Slate",
-  "version": "9.8.8",
+  "version": "9.8.81",
   "main": "lib/index.js",
   "license": "BSD-3-Clause",
   "scripts": {
@@ -12,6 +12,7 @@
     "prepublish": "yarn build"
   },
   "dependencies": {
+    "@brandontle/rich-markdown-editor": "^9.8.81",
     "@domoinc/slate-edit-table": "^0.22.2",
     "@tommoor/slate-edit-list": "0.19.0-0",
     "@wikifactory/slate-edit-blockquote": "^0.7.1",
