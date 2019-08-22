@@ -1,3 +1,10 @@
+# @brandontle/rich-markdown-editor
+This fork makes a few opinionated modifications to the already-wonderful rich-markdown-editor.
+
+### Current changes include:
+* Removal of the BlockInsert buttons on the side
+* An additional `documentChanged` variable passed to the onChange callback to indicate that the actual document value such as string or style (and NOT the editor selection) has changed.
+
 [![npm version](https://badge.fury.io/js/rich-markdown-editor.svg)](https://badge.fury.io/js/rich-markdown-editor) [![CircleCI](https://img.shields.io/circleci/project/github/outline/rich-markdown-editor.svg)](https://circleci.com/gh/outline/rich-markdown-editor) [![Join the community on Spectrum](https://withspectrum.github.io/badge/badge.svg)](https://spectrum.chat/outline) [![Formatted with Prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat)](https://github.com/prettier/prettier)
 
 # rich-markdown-editor
@@ -6,7 +13,7 @@ A React and [Slate](https://github.com/ianstormtaylor/slate) based editor that p
 The editor is WYSIWYG and includes many formatting tools whilst retaining the ability to write markdown
 shortcuts inline and output Markdown.
 
-> Note: This project is **not attempting** to be an all-purpose Markdown editor. It renders and outputs a subset of the Markdown schema, as well as supporting markdown-like syntax as shortcuts for rich text editing.
+> Note: This project is not attempting to be an all-purpose editor. If you wish to heavily customize the design, layout, or toolbars please fork the project.
 
 ## Usage
 
@@ -68,18 +75,6 @@ Allows overriding the inbuilt theme to brand the editor, for example use your ow
 #### `dark`
 
 With `dark` set to `true` the editor will use a default dark theme that's included. See the [source here](/src/theme.js).
-
-#### `tooltip`
-
-A React component that will be wrapped around items that have an optional tooltip. You can use this to inject your own tooltip library into the editor – the component will be passed the following props:
-
-- `tooltip`: A React node with the tooltip content
-- `placement`: Enum `top`, `bottom`, `left`, `right`
-- `children`: The component that the tooltip wraps, must be rendered
-
-#### `headingsOffset`
-
-A number that will offset the document headings by a number of levels. For example, if you already nest the editor under a main `h1` title you might want the user to only be able to create `h2` headings and below, in this case you would set the prop to `1`.
 
 
 ### Callbacks
@@ -161,6 +156,10 @@ import { history } from "react-router";
   }}
 />
 ```
+
+#### `renderNode`
+
+See the [Slate documentation](https://docs.slatejs.org/guides/rendering#nodes-and-marks) for an example.  There is an [inbuilt renderNode](https://github.com/outline/rich-markdown-editor/blob/master/src/nodes.js) implemented as a plugin.
 
 #### `getLinkComponent(Node)`
 

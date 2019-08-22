@@ -1,5 +1,5 @@
 {
-  "name": "rich-markdown-editor",
+  "name": "@brandontle/rich-markdown-editor",
   "description": "A rich text editor with Markdown shortcuts built on Slate",
   "version": "9.8.8",
   "main": "lib/index.js",
@@ -76,7 +76,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/outline/rich-markdown-editor.git"
+    "url": "git+https://github.com/brandontle/rich-markdown-editor.git"
   },
   "keywords": [
     "editor",
@@ -85,9 +85,9 @@
     "text",
     "wysiwyg"
   ],
-  "author": "Tom Moor <tom.moor@gmail.com>",
+  "author": "Brandon Le <ble.message@gmail.com>",
   "bugs": {
     "url": "https://github.com/outline/rich-markdown-editor/issues"
   },
-  "homepage": "https://github.com/outline/rich-markdown-editor#readme"
+  "homepage": "https://github.com/brandontle/rich-markdown-editor#readme"
 }
