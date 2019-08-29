@@ -1,7 +1,7 @@
 {
   "name": "@brandontle/rich-markdown-editor",
   "description": "A rich text editor with Markdown shortcuts built on Slate",
-  "version": "9.8.8",
+  "version": "9.829.1",
   "main": "lib/index.js",
   "license": "BSD-3-Clause",
   "scripts": {
@@ -33,6 +33,7 @@
     "react-portal": "^4.1.4",
     "slate": "^0.45.0",
     "slate-collapse-on-escape": "^0.8.1",
+    "slate-deep-table": "^0.9.6",
     "slate-drop-or-paste-images": "^0.9.1",
     "slate-md-serializer": "5.4.3-1",
     "slate-paste-linkify": "^0.7.0",

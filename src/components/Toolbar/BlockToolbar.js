@@ -1,8 +1,8 @@
 // @flow
-import * as React from "react";
-import { findDOMNode } from "react-dom";
-import keydown from "react-keydown";
-import styled, { withTheme } from "styled-components";
+import * as React from 'react';
+import { findDOMNode } from 'react-dom';
+import keydown from 'react-keydown';
+import styled, { withTheme } from 'styled-components';
 import {
   Heading1Icon,
   Heading2Icon,
@@ -14,11 +14,11 @@ import {
   HorizontalRuleIcon,
   TodoListIcon,
   TableIcon,
-} from "outline-icons";
-import getDataTransferFiles from "../../lib/getDataTransferFiles";
-import type { SlateNodeProps, Theme } from "../../types";
-import EditList from "../../plugins/EditList";
-import ToolbarButton from "./ToolbarButton";
+} from 'outline-icons';
+import getDataTransferFiles from '../../lib/getDataTransferFiles';
+import type { SlateNodeProps, Theme } from '../../types';
+import EditList from '../../plugins/EditList';
+import ToolbarButton from './ToolbarButton';
 
 const { changes } = EditList;
 
@@ -36,14 +36,14 @@ class BlockToolbar extends React.Component<Props> {
   file: ?HTMLInputElement;
 
   componentDidMount() {
-    if (typeof window !== "undefined") {
-      window.addEventListener("click", this.handleOutsideMouseClick);
+    if (typeof window !== 'undefined') {
+      window.addEventListener('click', this.handleOutsideMouseClick);
     }
   }
 
   componentWillUnmount() {
-    if (typeof window !== "undefined") {
-      window.removeEventListener("click", this.handleOutsideMouseClick);
+    if (typeof window !== 'undefined') {
+      window.removeEventListener('click', this.handleOutsideMouseClick);
     }
   }
 
@@ -60,53 +60,57 @@ class BlockToolbar extends React.Component<Props> {
     this.removeSelf(ev);
   };
 
-  @keydown("esc")
+  @keydown('esc')
   removeSelf(ev: SyntheticEvent<>) {
     ev.preventDefault();
     ev.stopPropagation();
 
     this.props.editor.setNodeByKey(this.props.node.key, {
-      type: "paragraph",
-      text: "",
+      type: 'paragraph',
+      text: '',
       isVoid: false,
     });
   }
 
   insertBlock = (
     options: Options,
-    cursorPosition: "before" | "on" | "after" = "on"
+    cursorPosition: 'before' | 'on' | 'after' = 'on'
   ) => {
     const { editor } = this.props;
 
     editor.moveToEndOfNode(this.props.node);
 
-    if (options.type === "table") {
-      editor.insertTable(3, 3).moveSelection(0, 0);
+    // if (options.type === 'table') {
+    //   editor.insertTable(3, 3).moveSelection(0, 0);
+    // } else
+
+    if (options.type === 'reference-block') {
+      editor.insertTable(2, 1);
     } else {
       editor.insertBlock(options.type);
     }
 
     editor.removeNodeByKey(this.props.node.key).moveToEnd();
 
-    if (cursorPosition === "before") editor.moveToStartOfPreviousBlock();
-    if (cursorPosition === "after") editor.moveToStartOfNextBlock();
+    if (cursorPosition === 'before') editor.moveToStartOfPreviousBlock();
+    if (cursorPosition === 'after') editor.moveToStartOfNextBlock();
     return editor.focus();
   };
 
   insertList = (type: string) => {
     const { editor } = this.props;
-    const checked = type === "todo-list" ? false : undefined;
+    const checked = type === 'todo-list' ? false : undefined;
 
     this.props.editor.setNodeByKey(this.props.node.key, {
-      type: "paragraph",
-      text: "",
+      type: 'paragraph',
+      text: '',
       isVoid: false,
     });
 
     return editor
       .moveToEndOfNode(this.props.node)
       .command(changes.wrapInList, type, undefined, {
-        type: "list-item",
+        type: 'list-item',
         data: { checked },
       })
       .focus();
@@ -117,26 +121,27 @@ class BlockToolbar extends React.Component<Props> {
     ev.stopPropagation();
 
     switch (type) {
-      case "heading1":
-      case "heading2":
-      case "block-quote":
-      case "table":
-      case "code":
+      case 'heading1':
+      case 'heading2':
+      case 'block-quote':
+      // case 'table':
+      case 'reference-block':
+      case 'code':
         return this.insertBlock({ type });
-      case "horizontal-rule":
+      case 'horizontal-rule':
         return this.insertBlock(
           {
-            type: { type: "horizontal-rule", isVoid: true },
+            type: { type: 'horizontal-rule', isVoid: true },
           },
-          "after"
+          'after'
         );
-      case "bulleted-list":
-        return this.insertList("bulleted-list");
-      case "ordered-list":
-        return this.insertList("ordered-list");
-      case "todo-list":
-        return this.insertList("todo-list");
-      case "image":
+      case 'bulleted-list':
+        return this.insertList('bulleted-list');
+      case 'ordered-list':
+        return this.insertList('ordered-list');
+      case 'todo-list':
+        return this.insertList('todo-list');
+      case 'image':
         return this.onPickImage();
       default:
     }
@@ -184,31 +189,38 @@ class BlockToolbar extends React.Component<Props> {
 
     return (
       <Bar {...attributes} ref={ref => (this.bar = ref)}>
-        {this.renderBlockButton("heading1", Heading1Icon, "Add heading")}
-        {this.renderBlockButton("heading2", Heading2Icon, "Add subheading")}
+        {this.renderBlockButton('heading1', Heading1Icon, 'Add heading')}
+        {this.renderBlockButton('heading2', Heading2Icon, 'Add subheading')}
         <Separator />
         {this.renderBlockButton(
-          "bulleted-list",
+          'bulleted-list',
           BulletedListIcon,
-          "Start bulleted list"
+          'Start bulleted list'
         )}
         {this.renderBlockButton(
-          "ordered-list",
+          'ordered-list',
           OrderedListIcon,
-          "Start numbered List"
+          'Start numbered List'
         )}
-        {this.renderBlockButton("todo-list", TodoListIcon, "Start checklist")}
+        {this.renderBlockButton('todo-list', TodoListIcon, 'Start checklist')}
         <Separator />
-        {this.renderBlockButton("table", TableIcon, "Create table")}
-        {this.renderBlockButton("block-quote", BlockQuoteIcon, "Add quote")}
-        {this.renderBlockButton("code", CodeIcon, "Add code")}
+
+        {/* {this.renderBlockButton('table', TableIcon, 'Create table')} */}
         {this.renderBlockButton(
-          "horizontal-rule",
+          // relies on table (ex. in node.js)
+          'reference-block',
+          TableIcon,
+          'Create reference'
+        )}
+        {this.renderBlockButton('block-quote', BlockQuoteIcon, 'Add quote')}
+        {this.renderBlockButton('code', CodeIcon, 'Add code')}
+        {this.renderBlockButton(
+          'horizontal-rule',
           HorizontalRuleIcon,
-          "Add break"
+          'Add break'
         )}
         {hasImageUpload &&
-          this.renderBlockButton("image", ImageIcon, "Add image")}
+          this.renderBlockButton('image', ImageIcon, 'Add image')}
         <HiddenInput
           type="file"
           ref={ref => (this.file = ref)}
@@ -240,7 +252,7 @@ const Bar = styled.div`
 
   &:before,
   &:after {
-    content: "";
+    content: '';
     position: absolute;
     left: -100%;
     width: 100%;

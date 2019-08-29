@@ -3,13 +3,13 @@ import * as React from 'react';
 import { findDOMNode } from 'react-dom';
 import styled from 'styled-components';
 import type { SlateNodeProps as Props } from '../../types';
-import { GripRow, GripColumn, GripTable } from './Cell';
+import RefCell, { GripRow, GripColumn, GripTable } from './RefCell';
 import Scrollable from './Scrollable';
 
 // Looking for logic for the table controls and toolbars?
 // It mostly lives in the "Cell" component and the Table plugin
 
-class Table extends React.Component<Props> {
+class ReferenceBlock extends React.Component<Props> {
   table: HTMLTableElement;
 
   componentDidMount() {
@@ -52,29 +52,33 @@ class Table extends React.Component<Props> {
 
 const StyledTable = styled.table`
   width: 100%;
+
   border-collapse: collapse;
   border-radius: 4px;
-  border: 1px solid ${props => props.theme.tableDivider};
-  margin-top: 1em;
+  /* border: 1px solid ${props => props.theme.tableDivider}; */
+  border: none;
+
+  margin-top: 14px;
 
   * {
     box-sizing: initial;
   }
 
-  ${GripColumn},
+  /* ${GripColumn},
   ${GripRow},
   ${GripTable} {
     opacity: 0;
     transition: opacity 100ms ease-in-out;
-  }
+  } */
 
   &:hover {
-    ${GripColumn},
-    ${GripRow},
-    ${GripTable} {
+    /* ${RefCell} {
       opacity: 1;
-    }
+      background: grey;
+    } */
+
   }
+
 `;
 
-export default Table;
+export default ReferenceBlock;

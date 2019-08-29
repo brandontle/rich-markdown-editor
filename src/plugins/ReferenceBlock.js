@@ -1,12 +1,11 @@
 // @flow
 import type { Editor, Change, Node } from 'slate';
 
-function TablePlugin() {
+function ReferenceBlockPlugin() {
   return {
     schema: {
       blocks: {
-        // 'table-cell': {
-        'ref-cell': {
+        'reference-block': {
           data: {
             align: (align: string) => {
               return ['left', 'center', 'right'].includes(align);
@@ -218,4 +217,4 @@ function TablePlugin() {
   };
 }
 
-export default TablePlugin;
+export default ReferenceBlockPlugin;

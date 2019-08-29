@@ -1,31 +1,10 @@
 // @flow
 import * as React from 'react';
-import { map } from 'lodash';
+// import { map } from 'lodash';
 import styled from 'styled-components';
 import type { SlateNodeProps } from '../types';
-import CopyButton from './CopyButton';
 
-function getCopyText(node) {
-  return node.nodes.reduce((memo, line) => `${memo}${line.text}\n`, '');
-}
-
-const languages = {
-  none: 'None',
-  bash: 'Bash',
-  css: 'CSS',
-  clike: 'C',
-  csharp: 'C#',
-  markup: 'HTML',
-  java: 'Java',
-  javascript: 'JavaScript',
-  php: 'PHP',
-  powershell: 'Powershell',
-  python: 'Python',
-  ruby: 'Ruby',
-  typescript: 'TypeScript',
-};
-
-export default function CodeBlock({
+export default function RefPane({
   children,
   node,
   readOnly,
@@ -33,31 +12,28 @@ export default function CodeBlock({
   editor,
 }: SlateNodeProps) {
   const { data } = node;
-  const language = data.get('language') || 'javascript';
+  // const language = data.get('language') || 'javascript';
 
-  const onSelectLanguage = ev => {
+  // const onSelectLanguage = ev => {
+  //   editor.setNodeByKey(node.key, {
+  //     data: { ...data, language: ev.target.value },
+  //   });
+  // };
+
+  const handleRightChange = ev => {
+    console.log('right event', ev);
     editor.setNodeByKey(node.key, {
-      data: { ...data, language: ev.target.value },
+      data: { ...data, right: ev.target.value },
     });
   };
 
+  console.log('data', data);
+  console.log('children', children);
+
   return (
     <Container {...attributes} spellCheck={false}>
-      {readOnly && <CopyButton text={getCopyText(node)} />}
-      <Code>{children}</Code>
-      {!readOnly && (
-        <Language
-          onChange={onSelectLanguage}
-          value={language}
-          contentEditable={false}
-        >
-          {map(languages, (name, value) => (
-            <option key={value} value={value}>
-              {name}
-            </option>
-          ))}
-        </Language>
-      )}
+      <Left>{children}</Left>
+      <Right onChange={handleRightChange}>{data.right}</Right>
     </Container>
   );
 }
@@ -66,13 +42,45 @@ export default function CodeBlock({
   Based on Prism template by Bram de Haan (http://atelierbram.github.io/syntax-highlighting/prism/)
   Original Base16 color scheme by Chris Kempson (https://github.com/chriskempson/base16)
 */
+
+const Container = styled.div`
+  display: flex;
+  position: relative;
+
+  background: ${props => props.theme.codeBackground};
+  border-radius: 4px;
+  border: 1px solid ${props => props.theme.codeBorder};
+
+  overflow-x: auto;
+
+  &:hover {
+    > span {
+      opacity: 1;
+    }
+  }
+`;
+
+const Left = styled.div`
+  display: flex;
+  width: 100%;
+  flex: 0 0 60%;
+
+  word-break: break-word;
+`;
+
+const Right = styled.div`
+  display: flex;
+  background: yellow;
+  width: 100%;
+
+  word-break: break-word;
+`;
+
 const Code = styled.code`
   display: block;
   overflow-x: auto;
   padding: 0.5em 1em;
   line-height: 1.4em;
-
-  max-width: 680px;
 
   pre {
     -webkit-font-smoothing: initial;
@@ -189,29 +197,5 @@ const Code = styled.code`
 
   .token.entity {
     cursor: help;
-  }
-`;
-
-const Language = styled.select`
-  position: absolute;
-  bottom: 2px;
-  right: 2px;
-  opacity: 0;
-`;
-
-const Container = styled.div`
-  position: relative;
-  background: ${props => props.theme.codeBackground};
-  border-radius: 4px;
-  border: 1px solid ${props => props.theme.codeBorder};
-
-  &:hover {
-    > span {
-      opacity: 1;
-    }
-
-    ${Language} {
-      opacity: 1;
-    }
   }
 `;

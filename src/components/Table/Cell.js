@@ -1,9 +1,9 @@
 // @flow
-import * as React from "react";
-import styled from "styled-components";
-import type { SlateNodeProps as Props } from "../../types";
-import Toolbar from "./Toolbar";
-import Grip from "./Grip";
+import * as React from 'react';
+import styled from 'styled-components';
+import type { SlateNodeProps as Props } from '../../types';
+import Toolbar from './Toolbar';
+import Grip from './Grip';
 
 class Cell extends React.Component<Props> {
   cell: ?HTMLElement;
@@ -12,31 +12,33 @@ class Cell extends React.Component<Props> {
     const { children, editor, readOnly, attributes, node } = this.props;
     const { document } = editor.value;
 
-    const position = editor.getPositionByKey(document, node.key);
-    const isFirstRow = position.isFirstRow();
-    const isFirstColumn = position.isFirstColumn();
-    const isLastRow = position.isLastRow();
-    const isLastColumn = position.isLastColumn();
-    const isSelected = node.data.get("selected");
-    const isTableSelected = position.table.data.get("selectedTable");
-    const isActive = editor.isSelectionInTable() && !isTableSelected;
-    const selectedRows = position.table.data.get("selectedRows");
-    const selectedColumns = position.table.data.get("selectedColumns");
-    const isRowSelected =
-      selectedRows && selectedRows.includes(position.getRowIndex());
-    const isColumnSelected =
-      selectedColumns && selectedColumns.includes(position.getColumnIndex());
+    console.log('cell editor', editor);
+
+    // const position = editor.getPositionByKey(document, node.key);
+    // const isFirstRow = position.isFirstRow();
+    // const isFirstColumn = position.isFirstColumn();
+    // const isLastRow = position.isLastRow();
+    // const isLastColumn = position.isLastColumn();
+    // const isSelected = node.data.get('selected');
+    // const isTableSelected = position.table.data.get('selectedTable');
+    // const isActive = editor.isSelectionInTable() && !isTableSelected;
+    // const selectedRows = position.table.data.get('selectedRows');
+    // const selectedColumns = position.table.data.get('selectedColumns');
+    // const isRowSelected =
+    //   selectedRows && selectedRows.includes(position.getRowIndex());
+    // const isColumnSelected =
+    //   selectedColumns && selectedColumns.includes(position.getColumnIndex());
 
     return (
       <StyledTd
         ref={ref => (this.cell = ref)}
-        isFirstRow={isFirstRow}
-        isFirstColumn={isFirstColumn}
-        isSelected={isSelected}
-        onClick={() => editor.clearSelected(position.table)}
+        // isFirstRow={isFirstRow}
+        // isFirstColumn={isFirstColumn}
+        // isSelected={isSelected}
+        // onClick={() => editor.clearSelected(position.table)}
         {...attributes}
       >
-        {!readOnly && (
+        {/* {!readOnly && (
           <React.Fragment>
             {isFirstColumn && isFirstRow && (
               <React.Fragment>
@@ -109,9 +111,9 @@ class Cell extends React.Component<Props> {
               </React.Fragment>
             )}
           </React.Fragment>
-        )}
+        )} */}
 
-        <RowContent align={node.data.get("align")}>{children}</RowContent>
+        <RowContent align={node.data.get('align')}>{children}</RowContent>
       </StyledTd>
     );
   }

@@ -5899,6 +5899,13 @@ slate-collapse-on-escape@^0.8.1:
   dependencies:
     to-pascal-case "^1.0.0"
 
+slate-deep-table@^0.9.6:
+  version "0.9.6"
+  resolved "https://registry.yarnpkg.com/slate-deep-table/-/slate-deep-table-0.9.6.tgz#5ff103bfcc90d02aa0f2a60ba1840e519db8a593"
+  integrity sha512-k3iUoGrFYzRGVWayewW3NH2Qwiumu7F4PsUcmhXLkdCfKVLXv0X9bVVGcKOIyjux8+9G8g+QefKEP6Rdf3gIyg==
+  dependencies:
+    slate-html-serializer "^0.8.0"
+
 slate-dev-environment@^0.2.2:
   version "0.2.2"
   resolved "https://registry.yarnpkg.com/slate-dev-environment/-/slate-dev-environment-0.2.2.tgz#bd8946e1fe4cf5447060c84a362a1d026ed8b77f"
@@ -5930,6 +5937,13 @@ slate-hotkeys@^0.2.9:
   dependencies:
     is-hotkey "0.1.4"
     slate-dev-environment "^0.2.2"
+
+slate-html-serializer@^0.8.0:
+  version "0.8.10"
+  resolved "https://registry.yarnpkg.com/slate-html-serializer/-/slate-html-serializer-0.8.10.tgz#b1a34c840051f6aaf634ab949c92742eac750450"
+  integrity sha512-mWJeMLlIvuwGTbk73itvFtZtRFV0+LRvJeBlGb5NNnBsD27nJNax72mfDjb9tsM1PfYSK1JeMd087mQY1+74cg==
+  dependencies:
+    type-of "^2.0.1"
 
 slate-md-serializer@5.4.3-1:
   version "5.4.3-1"

@@ -1,10 +1,10 @@
 // @flow
-import * as React from 'react';
-import { Editor } from 'slate';
-import { Portal } from 'react-portal';
-import { findDOMNode } from 'react-dom';
-import TableToolbar from '../Toolbar/TableToolbar';
-import { Menu } from '../Toolbar';
+import * as React from "react";
+import { Editor } from "slate";
+import { Portal } from "react-portal";
+import { findDOMNode } from "react-dom";
+import TableToolbar from "../Toolbar/TableToolbar";
+import { Menu } from "../Toolbar";
 
 // These widths should be updated whenever the toolbar styles change
 const MENU_WIDTHS = {
@@ -14,15 +14,15 @@ const MENU_WIDTHS = {
 };
 
 const MENU_ALIGN = {
-  row: 'left',
-  column: 'center',
-  table: 'left',
+  row: "left",
+  column: "center",
+  table: "left",
 };
 
 type Props = {
   editor: Editor,
   active: Boolean,
-  type: 'table' | 'row' | 'column',
+  type: "table" | "row" | "column",
   cell: ?HTMLElement,
 };
 
@@ -51,7 +51,7 @@ class Toolbar extends React.Component<Props, State> {
 
     // Position the menu correctly depending on the type, cell and scroll position
     const left =
-      MENU_ALIGN[this.props.type] === 'center'
+      MENU_ALIGN[this.props.type] === "center"
         ? Math.round(
             rect.left + window.scrollX + rect.width / 2 - menuWidth / 2
           )
@@ -74,9 +74,9 @@ class Toolbar extends React.Component<Props, State> {
         <Menu active={active} style={this.state}>
           <TableToolbar
             editor={editor}
-            isTableSelected={type === 'table'}
-            isRowSelected={type === 'row'}
-            isColumnSelected={type === 'column'}
+            isTableSelected={type === "table"}
+            isRowSelected={type === "row"}
+            isColumnSelected={type === "column"}
           />
         </Menu>
       </Portal>

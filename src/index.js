@@ -342,6 +342,7 @@ const StyledEditor = styled(Editor)`
   p {
     position: relative;
     margin: 0;
+    max-width: 670px;
   }
 
   a {
