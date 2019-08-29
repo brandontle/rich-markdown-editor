@@ -3,7 +3,7 @@ This fork makes a few opinionated modifications to the already-wonderful [rich-m
 
 ### Current changes include:
 * New BlockReference node (two-column table for references)
-* Input and Output value is JSON string instead of markdown string
+* Input and Output value is JSON string instead of markdown string to accommodate BlockReference node
 * An additional `documentChanged` variable passed to the onChange callback to indicate that the document value such as string or style (and NOT the editor selection) has changed.
 * Added prop for 'simple' mode which disables BlockInsert and Toolbar
 * [Temporary] Disabled Table plugin
