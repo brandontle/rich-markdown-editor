@@ -2,8 +2,11 @@
 This fork makes a few opinionated modifications to the already-wonderful rich-markdown-editor.
 
 ### Current changes include:
-* Removal of the BlockInsert buttons on the side
+* New BlockReference node (two-column table for references)
+* Input and Output value is JSON string instead of markdown string
 * An additional `documentChanged` variable passed to the onChange callback to indicate that the document value such as string or style (and NOT the editor selection) has changed.
+* Added prop for 'simple' mode which disables BlockInsert and Toolbar
+* [Temporary] Disabled Table plugin
 
 [![npm version](https://badge.fury.io/js/rich-markdown-editor.svg)](https://badge.fury.io/js/rich-markdown-editor) [![CircleCI](https://img.shields.io/circleci/project/github/outline/rich-markdown-editor.svg)](https://circleci.com/gh/outline/rich-markdown-editor) [![Join the community on Spectrum](https://withspectrum.github.io/badge/badge.svg)](https://spectrum.chat/outline) [![Formatted with Prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat)](https://github.com/prettier/prettier)
 
