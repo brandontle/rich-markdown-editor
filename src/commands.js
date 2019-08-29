@@ -1,15 +1,15 @@
 // @flow
-import { Editor, Block, KeyUtils } from "slate";
+import { Editor, Block, KeyUtils } from 'slate';
 
 const commands = {
   wrapLink(editor: Editor, href: string) {
     if (!editor.isLinkActive()) {
-      editor.wrapInline({ type: "link", data: { href } });
+      editor.wrapInline({ type: 'link', data: { href } });
     }
   },
 
   unwrapLink(editor: Editor) {
-    editor.unwrapInline("link");
+    editor.unwrapInline('link');
   },
 
   insertImageFile(editor: Editor, file: window.File) {
@@ -22,27 +22,27 @@ const commands = {
 
     if (!uploadImage) {
       console.warn(
-        "uploadImage callback must be defined to handle image uploads."
+        'uploadImage callback must be defined to handle image uploads.'
       );
     }
 
     if (onImageUploadStart) onImageUploadStart();
 
     let key = KeyUtils.create();
-    const alt = "";
+    const alt = '';
 
     // load the file as a data URL
     const placeholderSrc = URL.createObjectURL(file);
     const node = Block.create({
       key,
-      type: "image",
+      type: 'image',
       isVoid: true,
       data: { src: placeholderSrc, alt, loading: true },
     });
 
     editor
       .insertBlock(node)
-      .insertBlock("paragraph")
+      .insertBlock('paragraph')
       .onChange(editor);
 
     // withoutSaving prevents this op from being added to the history, so you can't
@@ -54,7 +54,7 @@ const commands = {
       uploadImage(file)
         .then(src => {
           if (!src) {
-            throw new Error("No image url returned from uploadImage callback");
+            throw new Error('No image url returned from uploadImage callback');
           }
 
           // replace the placeholder with the final image if we can. The user may have
@@ -64,7 +64,7 @@ const commands = {
               data: { src, alt, loading: false },
             });
           } catch (err) {
-            console.warn("Image placeholder could not be found", err);
+            console.warn('Image placeholder could not be found', err);
           }
         })
         .catch(err => {
@@ -72,7 +72,7 @@ const commands = {
           editor.removeNodeByKey(key);
 
           if (onShowToast) {
-            onShowToast("Sorry, an error occurred uploading the image");
+            onShowToast('Sorry, an error occurred uploading the image');
           }
           throw err;
         })

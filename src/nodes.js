@@ -1,16 +1,18 @@
 // @flow
-import * as React from "react";
-import { Editor } from "slate";
-import Code from "./components/Code";
-import BlockToolbar from "./components/Toolbar/BlockToolbar";
-import HorizontalRule from "./components/HorizontalRule";
-import Image from "./components/Image";
-import Link from "./components/Link";
-import Table from "./components/Table";
-import Cell from "./components/Table/Cell";
-import Row from "./components/Table/Row";
-import ListItem from "./components/ListItem";
-import TodoList from "./components/TodoList";
+import * as React from 'react';
+import { Editor } from 'slate';
+import Code from './components/Code';
+import RefPane from './components/RefPane';
+import BlockToolbar from './components/Toolbar/BlockToolbar';
+import HorizontalRule from './components/HorizontalRule';
+import Image from './components/Image';
+import Link from './components/Link';
+// import Table from './components/Table';
+import ReferenceBlock from './components/ReferenceBlock';
+import RefCell from './components/ReferenceBlock/RefCell';
+import RefRow from './components/ReferenceBlock/RefRow';
+import ListItem from './components/ListItem';
+import TodoList from './components/TodoList';
 import {
   Heading1,
   Heading2,
@@ -18,58 +20,66 @@ import {
   Heading4,
   Heading5,
   Heading6,
-} from "./components/Heading";
-import Paragraph from "./components/Paragraph";
-import type { SlateNodeProps } from "./types";
+} from './components/Heading';
+import Paragraph from './components/Paragraph';
+import type { SlateNodeProps } from './types';
 
 function renderNode(props: SlateNodeProps, editor: Editor, next: Function) {
   const { attributes } = props;
 
-  const hidden = props.node.data.get("hidden");
-  if (hidden) attributes.style = { display: "none" };
+  const hidden = props.node.data.get('hidden');
+  if (hidden) attributes.style = { display: 'none' };
 
   switch (props.node.type) {
-    case "paragraph":
+    case 'paragraph':
       return <Paragraph {...props} />;
-    case "block-toolbar":
+    case 'block-toolbar':
       return <BlockToolbar {...props} />;
-    case "block-quote":
+    case 'block-quote':
       return <blockquote {...attributes}>{props.children}</blockquote>;
-    case "bulleted-list":
+    case 'bulleted-list':
       return <ul {...attributes}>{props.children}</ul>;
-    case "ordered-list":
+    case 'ordered-list':
       return <ol {...attributes}>{props.children}</ol>;
-    case "todo-list":
+    case 'todo-list':
       return <TodoList {...attributes}>{props.children}</TodoList>;
-    case "table":
-      return <Table {...props}>{props.children}</Table>;
-    case "table-row":
-      return <Row {...props} />;
-    case "table-cell":
-      return <Cell {...props} />;
-    case "list-item":
+    // case 'table':
+    //   return <Table {...props}>{props.children}</Table>;
+    // case 'table-row':
+    //   return <Row {...props} />;
+    // case 'table-cell':
+    //   return <Cell {...props} />;
+    case 'reference-block':
+      return <ReferenceBlock {...props}>{props.children}</ReferenceBlock>;
+    case 'ref-row':
+      return <RefRow {...props} />;
+    case 'ref-cell':
+      return <RefCell {...props} />;
+    case 'list-item':
       return <ListItem {...props} />;
-    case "horizontal-rule":
+    case 'horizontal-rule':
       return <HorizontalRule {...props} />;
-    case "code":
+    case 'code':
       return <Code {...props} />;
-    case "code-line":
+    case 'refpane':
+      return <RefPane {...props} />;
+    case 'code-line':
       return <pre {...attributes}>{props.children}</pre>;
-    case "image":
+    case 'image':
       return <Image {...props} />;
-    case "link":
+    case 'link':
       return <Link {...props} />;
-    case "heading1":
+    case 'heading1':
       return <Heading1 {...props} />;
-    case "heading2":
+    case 'heading2':
       return <Heading2 {...props} />;
-    case "heading3":
+    case 'heading3':
       return <Heading3 {...props} />;
-    case "heading4":
+    case 'heading4':
       return <Heading4 {...props} />;
-    case "heading5":
+    case 'heading5':
       return <Heading5 {...props} />;
-    case "heading6":
+    case 'heading6':
       return <Heading6 {...props} />;
     default:
       return next();

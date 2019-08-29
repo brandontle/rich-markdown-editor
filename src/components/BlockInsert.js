@@ -1,11 +1,11 @@
 // @flow
-import * as React from "react";
-import { Portal } from "react-portal";
-import { Node } from "slate";
-import { Editor, findDOMNode } from "slate-react";
-import { isEqual } from "lodash";
-import styled, { withTheme } from "styled-components";
-import { PlusIcon } from "outline-icons";
+import * as React from 'react';
+import { Portal } from 'react-portal';
+import { Node } from 'slate';
+import { Editor, findDOMNode } from 'slate-react';
+import { isEqual } from 'lodash';
+import styled, { withTheme } from 'styled-components';
+import { PlusIcon } from 'outline-icons';
 
 type Props = {
   editor: Editor,
@@ -44,15 +44,15 @@ class BlockInsert extends React.Component<Props, State> {
   };
 
   componentDidMount = () => {
-    if (typeof window !== "undefined") {
-      window.addEventListener("mousemove", this.handleMouseMove);
+    if (typeof window !== 'undefined') {
+      window.addEventListener('mousemove', this.handleMouseMove);
     }
   };
 
   componentWillUnmount = () => {
     if (this.mouseMoveTimeout) clearTimeout(this.mouseMoveTimeout);
-    if (typeof window !== "undefined") {
-      window.removeEventListener("mousemove", this.handleMouseMove);
+    if (typeof window !== 'undefined') {
+      window.removeEventListener('mousemove', this.handleMouseMove);
     }
   };
 
@@ -75,7 +75,7 @@ class BlockInsert extends React.Component<Props, State> {
       // do not show block menu when it's open, the paragraph isn't empty
       // or the current node is an embed.
       const hideToolbar =
-        result.node.type !== "paragraph" ||
+        result.node.type !== 'paragraph' ||
         !!result.node.text.trim() ||
         result.node.isVoid;
 
@@ -108,9 +108,9 @@ class BlockInsert extends React.Component<Props, State> {
 
     // remove any existing toolbars in the document as a fail safe
     editor.value.document.nodes.forEach(node => {
-      if (node.type === "block-toolbar") {
+      if (node.type === 'block-toolbar') {
         editor.setNodeByKey(node.key, {
-          type: "paragraph",
+          type: 'paragraph',
           isVoid: false,
         });
       }
@@ -120,9 +120,9 @@ class BlockInsert extends React.Component<Props, State> {
     if (!node) return;
 
     // we're on an empty paragraph. just replace it with the block toolbar
-    if (!node.text.trim() && node.type === "paragraph") {
+    if (!node.text.trim() && node.type === 'paragraph') {
       editor.setNodeByKey(node.key, {
-        type: "block-toolbar",
+        type: 'block-toolbar',
         isVoid: true,
       });
     }

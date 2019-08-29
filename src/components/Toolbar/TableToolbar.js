@@ -1,7 +1,7 @@
 // @flow
-import * as React from "react";
-import { withTheme } from "styled-components";
-import { Editor } from "slate-react";
+import * as React from 'react';
+import { withTheme } from 'styled-components';
+import { Editor } from 'slate-react';
 import {
   AlignLeftIcon,
   AlignCenterIcon,
@@ -11,11 +11,11 @@ import {
   InsertAboveIcon,
   InsertBelowIcon,
   TrashIcon,
-} from "outline-icons";
+} from 'outline-icons';
 
-import type { Theme } from "../../types";
-import ToolbarButton from "./ToolbarButton";
-import Separator from "./Separator";
+import type { Theme } from '../../types';
+import ToolbarButton from './ToolbarButton';
+import Separator from './Separator';
 
 type Props = {
   isRowSelected: boolean,
@@ -33,8 +33,8 @@ class TableToolbar extends React.Component<Props> {
       const position = editor.getPositionByKey(document, startBlock.key);
 
       return (
-        position.cell.data.get("align") === align ||
-        startBlock.data.get("align") === align
+        position.cell.data.get('align') === align ||
+        startBlock.data.get('align') === align
       );
     } catch (_err) {
       return false;
@@ -143,9 +143,9 @@ class TableToolbar extends React.Component<Props> {
         )}
         {isColumnSelected && (
           <React.Fragment>
-            {this.renderAlignButton("left", AlignLeftIcon)}
-            {this.renderAlignButton("center", AlignCenterIcon)}
-            {this.renderAlignButton("right", AlignRightIcon)}
+            {this.renderAlignButton('left', AlignLeftIcon)}
+            {this.renderAlignButton('center', AlignCenterIcon)}
+            {this.renderAlignButton('right', AlignRightIcon)}
             <Separator />
             <ToolbarButton onMouseDown={this.removeColumn}>
               <Tooltip tooltip="Delete column" placement="top">
