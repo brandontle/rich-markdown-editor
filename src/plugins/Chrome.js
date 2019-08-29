@@ -12,8 +12,9 @@ function ChromePlugin() {
 
     return (
       <React.Fragment>
-        {!props.readOnly && <Toolbar value={editor.value} editor={editor} />}
-        {!props.readOnly && <BlockInsert editor={editor} />}
+        {!props.readOnly &&
+          (!props.simple && <Toolbar value={editor.value} editor={editor} />)}
+        {!props.readOnly && !props.simple && <BlockInsert editor={editor} />}
         {props.toc && <Contents editor={editor} />}
         {children}
       </React.Fragment>

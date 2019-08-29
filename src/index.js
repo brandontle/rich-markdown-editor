@@ -29,6 +29,7 @@ export type Props = {
   plugins: Plugin[],
   autoFocus?: boolean,
   readOnly?: boolean,
+  simple?: boolean,
   headingsOffset?: number,
   toc?: boolean,
   dark?: boolean,
@@ -248,6 +249,7 @@ class RichMarkdownEditor extends React.PureComponent<Props, State> {
   render = () => {
     const {
       readOnly,
+      simple,
       pretitle,
       placeholder,
       onSave,
@@ -300,6 +302,7 @@ class RichMarkdownEditor extends React.PureComponent<Props, State> {
             onImageUploadStop={onImageUploadStop}
             onShowToast={onShowToast}
             readOnly={readOnly}
+            simple={simple}
             spellCheck={!readOnly}
             uploadImage={uploadImage}
             pretitle={pretitle}
