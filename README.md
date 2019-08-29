@@ -1,5 +1,5 @@
 # @brandontle/rich-markdown-editor
-This fork makes a few opinionated modifications to the already-wonderful rich-markdown-editor.
+This fork makes a few opinionated modifications to the already-wonderful [rich-markdown-editor](https://github.com/outline/rich-markdown-editor).
 
 ### Current changes include:
 * New BlockReference node (two-column table for references)
