@@ -9,7 +9,7 @@ class RefCell extends React.Component<Props> {
   cell: ?HTMLElement;
 
   render() {
-    const { children, editor, readOnly, attributes, node } = this.props;
+    const { children, attributes, node } = this.props;
     // const { document } = editor.value;
 
     return (
@@ -93,7 +93,6 @@ const StyledTd = styled.td`
       : props.theme.background}; */
 
   margin: 7px 0;
-  padding-right: 30px;
   box-sizing: border-box;
   ${props =>
     props.isFirstRow &&
@@ -104,7 +103,7 @@ const StyledTd = styled.td`
   &:first-of-type {
     display: flex;
     width: 100%;
-    max-width: 700px;
+    /* max-width: 700px; */
     padding-right: 30px;
     box-sizing: border-box;
   }
