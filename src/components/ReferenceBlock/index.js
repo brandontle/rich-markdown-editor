@@ -38,11 +38,15 @@ class ReferenceBlock extends React.Component<Props> {
   };
 
   render() {
-    const { children, attributes } = this.props;
-
+    const { children, attributes, readOnly } = this.props;
+    console.log('ref block props', this.props);
     return (
       <Scrollable>
-        <StyledTable ref={ref => (this.table = ref)} {...attributes}>
+        <StyledTable
+          ref={ref => (this.table = ref)}
+          {...attributes}
+          readOnly={readOnly}
+        >
           <tbody>{children}</tbody>
         </StyledTable>
       </Scrollable>
@@ -73,7 +77,7 @@ const StyledTable = styled.table`
       opacity: 1;
       background: grey;
     } */
-    background: #171515;
+    background: ${props => (props.readOnly ? 'none' : '#171515')};
   }
 
 `;
