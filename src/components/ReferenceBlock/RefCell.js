@@ -77,7 +77,7 @@ export const GripColumn = styled(Grip)`
 
 const RowContent = styled.div`
   width: 100%;
-  padding: 4px 0;
+  padding: 4px 0 4px 0.5em;
   text-align: ${props => props.align};
 `;
 

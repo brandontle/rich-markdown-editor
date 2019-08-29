@@ -73,7 +73,7 @@ const Scrolling = styled.div`
   border-left: 1px solid transparent;
   border-right: 1px solid transparent;
   transition: border 250ms ease-in-out;
-  margin-left: -1em;
+  margin-left: -1.58em;
 `;
 
 const Shadow = styled.div`

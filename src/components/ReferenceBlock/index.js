@@ -73,7 +73,7 @@ const StyledTable = styled.table`
       opacity: 1;
       background: grey;
     } */
-    background: #2f2c2c;
+    background: #171515;
   }
 
 `;
