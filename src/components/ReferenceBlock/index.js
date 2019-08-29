@@ -58,8 +58,6 @@ const StyledTable = styled.table`
   /* border: 1px solid ${props => props.theme.tableDivider}; */
   border: none;
 
-  margin-top: 14px;
-
   * {
     box-sizing: initial;
   }
@@ -70,13 +68,12 @@ const StyledTable = styled.table`
     opacity: 0;
     transition: opacity 100ms ease-in-out;
   } */
-
   &:hover {
     /* ${RefCell} {
       opacity: 1;
       background: grey;
     } */
-
+    background: #2f2c2c;
   }
 
 `;

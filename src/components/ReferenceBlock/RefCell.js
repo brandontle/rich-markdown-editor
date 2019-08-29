@@ -86,12 +86,15 @@ const StyledTd = styled.td`
   position: relative;
 
   border: none;
-
-  background: ${props =>
+  background: none;
+  /* background: ${props =>
     props.isSelected
       ? props.theme.tableSelectedBackground
-      : props.theme.background};
+      : props.theme.background}; */
 
+  margin: 7px 0;
+  padding-right: 30px;
+  box-sizing: border-box;
   ${props =>
     props.isFirstRow &&
     `
