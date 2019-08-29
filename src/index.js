@@ -80,7 +80,8 @@ class RichMarkdownEditor extends React.PureComponent<Props, State> {
     this.plugins = [...props.plugins, ...builtInPlugins];
 
     this.state = {
-      editorValue: Markdown.deserialize(props.defaultValue),
+      editorValue: Value.fromJSON(JSON.parse(props.defaultValue)),
+      // editorValue: Markdown.deserialize(props.defaultValue),
     };
   }
 
