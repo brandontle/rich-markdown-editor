@@ -112,7 +112,7 @@ const StyledTd = styled.td`
   }
   &:nth-of-type(2) {
     display: flex;
-    flex: 1 2 450px;
+    flex: 1 0 450px;
 
     width: 100%;
     /* max-width: 450px; */
@@ -133,6 +133,7 @@ const StyledTd = styled.td`
     }
     &:nth-of-type(2) {
       flex: initial;
+      width: 100%;
     }
   }
 `;
