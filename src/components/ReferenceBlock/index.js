@@ -53,6 +53,8 @@ class ReferenceBlock extends React.Component<Props> {
 }
 
 const StyledTable = styled.table`
+  display: flex;
+  flex-direction: column;
   width: 100%;
 
   border-collapse: collapse;
