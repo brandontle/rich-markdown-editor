@@ -77,7 +77,7 @@ export const GripColumn = styled(Grip)`
 
 const RowContent = styled.div`
   width: 100%;
-  padding: 4px 0 4px 0.5em;
+  /* padding: 4px 0 4px 0.5em; */
   text-align: ${props => props.align};
 `;
 
@@ -106,13 +106,18 @@ const StyledTd = styled.td`
     /* max-width: 700px; */
     padding-right: 30px;
     box-sizing: border-box;
+    max-width: 670px;
   }
   &:nth-of-type(2) {
     display: flex;
     width: 100%;
     max-width: 450px;
-    border-left: 1px solid ${props => props.theme.tableDivider};
-    padding-left: 30px;
+    /* border-left: 1px solid ${props => props.theme.tableDivider}; */
+    background: #4e4e4e;
+    border-radius: 8px;
+
+    /* margin: 0 auto; */
+    padding: 20px;
     box-sizing: border-box;
   }
 `;

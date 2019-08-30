@@ -61,7 +61,7 @@ const StyledTable = styled.table`
   border: none;
 
   * {
-    box-sizing: initial;
+    box-sizing: border-box;
   }
 
   /* ${GripColumn},
