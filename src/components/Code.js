@@ -201,7 +201,7 @@ const Language = styled.select`
 
 const Container = styled.div`
   position: relative;
-  background: ${props => props.theme.codeBackground};
+  /* background: ${props => props.theme.codeBackground}; */
   border-radius: 4px;
   border: 1px solid ${props => props.theme.codeBorder};
 

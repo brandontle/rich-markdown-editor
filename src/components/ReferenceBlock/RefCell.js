@@ -106,20 +106,24 @@ const StyledTd = styled.td`
     /* max-width: 700px; */
     padding-right: 30px;
     box-sizing: border-box;
-    max-width: 670px;
+    /* max-width: 670px; */
   }
   &:nth-of-type(2) {
     display: flex;
     width: 100%;
-    max-width: 450px;
+    /* max-width: 450px; */
+    height: fit-content;
+
     /* border-left: 1px solid ${props => props.theme.tableDivider}; */
-    background: #4e4e4e;
     border-radius: 8px;
+    /* background: #4e4e4e; */
 
     /* margin: 0 auto; */
-    padding: 20px;
+    /* padding: 20px; */
     box-sizing: border-box;
   }
+
+  @media (max-width: )
 `;
 
 export default RefCell;
