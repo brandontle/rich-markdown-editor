@@ -102,6 +102,8 @@ const StyledTd = styled.td`
 
   &:first-of-type {
     display: flex;
+    flex: 1 1 670px;
+
     width: 100%;
     /* max-width: 700px; */
     padding-right: 30px;
@@ -110,6 +112,8 @@ const StyledTd = styled.td`
   }
   &:nth-of-type(2) {
     display: flex;
+    flex: 1 2 450px;
+
     width: 100%;
     /* max-width: 450px; */
     height: fit-content;
@@ -123,7 +127,14 @@ const StyledTd = styled.td`
     box-sizing: border-box;
   }
 
-  @media (max-width: )
+  @media (max-width: 850px) {
+    &:first-of-type {
+      flex: initial;
+    }
+    &:nth-of-type(2) {
+      flex: initial;
+    }
+  }
 `;
 
 export default RefCell;
